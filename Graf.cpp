@@ -59,8 +59,8 @@ int main() {
 
 	string graph =          //Funkcja rysujaca graf
 		"digraph G {" + all1 + " [ label = " + wag1 + " ];\n"
-			""+all2+" [label = "+wag3+" ];\n"
-			""+all3+"[label ="+wag2+" ];\n"
+			""+all2+" [label = "+wag2+" ];\n"
+			""+all3+"[label ="+wag3+" ];\n"
 		"}";
 
 	string dotPath = "C:\\Users\\Tycjan\\Downloads\\release\\bin\\dot.exe";
