@@ -21,7 +21,7 @@ def how_many_lines(file):
 
             with open('graf.txt', 'a') as fi:
 
-                fi.write(element[0])
+                fi.write("\""+element[0]+".py\"")
                 fi.write('\n')
                 fi.write(str(lines))
                 fi.write("\n")
@@ -58,9 +58,9 @@ def file_connect(file):
                                 zmienna_do_polaczen.append(polaczenia[1])
             fi = open('graf.txt', 'a')
             for amount in range(len(zmienna_do_polaczen)):
-                fi.write(element[0])
+                fi.write("\""+element[0]+".py\"")
                 fi.write('\n')
-                fi.write(str(zmienna_do_polaczen[amount]))
+                fi.write("\""+str(zmienna_do_polaczen[amount])+".py\"")
                 fi.write('\n')
             fi.close()
 
@@ -82,7 +82,7 @@ def file_connect_weight(file):
                             for el_dalej in polaczenia_dalej:
                                 for plik in my_catalogs:
                                     if el_dalej == plik:
-                                        fi.write("{} - {}".format(first,el_dalej))
+                                        fi.write("{} - {}.py".format(first,el_dalej))
                                         fi.write('\n')
         fi.close()
 
