@@ -8,9 +8,9 @@ using namespace std;
 int main() {
 
 	int i = 1;
-	string lin1, lin2, lin3;//zmienne odpowiadajace za dane ilosc linii w kodzie,zalezy do ilu plikow sie odnosimy
+	string lin1, lin2, lin3;  //zmienne odpowiadajace za dane ilosc linii w kodzie,zalezy do ilu plikow sie odnosimy
 	string pol11, pol12, pol21, pol22, pol31, pol32; //zmienne odpowiadajace za polaczenia
-	string wag1, wag2, wag3; //zmienne odpowiadajace za wagi poloczen
+	string wag1, wag2, wag3;  //zmienne odpowiadajace za wagi poloczen
 	string all1, all2, all3;
 	string znak = "->";
 	string linia;
@@ -52,15 +52,18 @@ int main() {
 
 
 	//dodawanie do siebie stringowstringow
-	all1 = pol11 + lin1 + znak + pol12 + lin3;
-	all2 = pol21 + lin2 + znak + pol22 + lin1;
-	all3 = pol31 + lin2 + znak + pol32 + lin3;
+	all1 = lin1 + znak + lin3;
+	all2 = lin2 + znak + lin1;
+	all3 = lin2 + znak + lin3;
 
 
 	string graph =          //Funkcja rysujaca graf
-		"digraph G {" + all1 + " [ label = " + wag1 + " ];\n"
-			""+all2+" [label = "+wag2+" ];\n"
-			""+all3+"[label ="+wag3+" ];\n"
+		"digraph G {" + lin1 + " [ xlabel = " + pol11 + "  ];\n"
+		"" + lin3 + "[xlabel = " + pol12 + "]; \n"
+		"" + lin2 + "[xlabel = " + pol21 + "]; \n"
+		"" + all1 + "[label = " + wag1 + "]; \n"
+		"" + all2 + " [label = " + wag2 + " ];\n"
+		"" + all3 + "[label =" + wag3 + " ];\n"
 		"}";
 
 	string dotPath = "C:\\Users\\Tycjan\\Downloads\\release\\bin\\dot.exe";
@@ -72,9 +75,9 @@ int main() {
 	out << graph << std::endl;
 	out.close();
 
+
 	system((dotPath + " " + tempFile + " -Tpng -o " + outFile).c_str());
 
 	dane.close();
 	return 0;
 }
-
