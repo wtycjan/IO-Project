@@ -30,9 +30,7 @@ def how_many_lines(file):
         print("Lack of file")
 
 
-
-#funkcja zlicza ilość różnych linii, jako wartość przyjmuje ścieżke do pliku, zwraca serie
-def list_of_lines(file):
+def list_of_lines(file): #funkcja zlicza ilość różnych linii, jako wartość przyjmuje ścieżke do pliku, zwraca serie
     list_of_lines1 = []
     with open(file, 'r') as f:
         for linia in f:
@@ -90,6 +88,7 @@ def file_connect_weight(file):
         print(m)
         print("Lack of file")
 
+
 def function_connect(file):
     try:
         functions_list = []
@@ -106,6 +105,7 @@ def function_connect(file):
     except IndexError as m:
         print(m)
         print("Lack of file")
+
 
 def function_connect_weight(file, function_list):
     try:
@@ -124,10 +124,17 @@ def function_connect_weight(file, function_list):
                                         how_many_function.append(polaczenia_dalej1[0])
         return how_many_function
 
-
     except IndexError as m:
         print(m)
         print("Lack of file")
+
+
+def final_weight(weight_list):
+    temp = weight_list[1]
+    weight_list[1] = weight_list[0]
+    weight_list[0] = temp
+    return weight_list
+
 
 def write_to_file_fun_data(list1,list2):
     fun_info = []
@@ -142,3 +149,6 @@ def write_to_file_fun_data(list1,list2):
         fi.write(str(licznik))
         fi.write("\n")
     fi.close()
+
+
+
