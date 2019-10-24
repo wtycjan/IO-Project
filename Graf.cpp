@@ -9,7 +9,7 @@ int i = 1;
 string lin1, lin2, lin3,lin4,lin5,lin6,lin7,lin8;  //zmienne odpowiadajace za dane ilosc linii w kodzie,zalezy do ilu plikow sie odnosimy
 string pol11, pol12, pol21, pol22, pol31, pol32,pol41,pol42; //zmienne odpowiadajace za polaczenia
 string wag1, wag2, wag3;  //zmienne odpowiadajace za wagi poloczen
-string all1, all2, all3;
+string all1, all2, all3,all4,all5,all6,all7,all8;
 string znak = "->";
 string linia;
 fstream dane;
@@ -83,7 +83,7 @@ void graf_pliki() {
 }
 void funkcje() {
 
-	i = 0;
+	i = 1;
 	dane.open("function_weight.txt", ios::in);  //txt od Grzesia
 
 	if (dane.good() == false)
@@ -121,19 +121,26 @@ void funkcje() {
 			i++;
 		}
 	}
-
+	all1 = pol11+lin1;
+	all2 = pol12+lin2;
+	all3 = pol21+lin3;
+	all5 = pol22+lin4;
+	all5 = pol31+lin5;
+	all6 = pol32+lin6;
+	all7 = pol41+lin7;
+	all8 = pol42+lin8;
 
 }
 void graf_funkcje() {
 	string graph =          //Funkcja rysujaca graf
-		"digraph G {" + lin1 + " [ xlabel = " + pol11 + "  ];\n"
-		"" + lin2 + "[xlabel = " + pol12 + "]; \n"
-		"" + lin3 + "[xlabel = " + pol21 + "]; \n"
-		"" + lin4 + "[xlabel = " + pol22 + "]; \n"
-		"" + lin5 + "[xlabel = " + pol31 + "]; \n"
-		"" + lin6 + "[xlabel = " + pol32 + "]; \n"
-		"" + lin7 + "[xlabel = " + pol41 + "]; \n"
-		"" + lin8 + "[xlabel = " + pol42 + "]; \n"
+		"digraph G {" + all1+ ";\n"
+		"" + all2 + "; \n"
+		"" + all3 + "; \n"
+		
+		"" + all5 + "; \n"
+		"" + all6 + "; \n"
+		"" + all7 + "; \n"
+		"" + all8 + "; \n"
 		"}";
 
 	string dotPath = "C:\\Users\\Tycjan\\Downloads\\release\\bin\\dot.exe";
@@ -160,6 +167,6 @@ int main() {
 	funkcje();
 	graf_funkcje();
 
-
+	cout << all1;
 	return 0;
 }
