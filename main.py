@@ -27,5 +27,5 @@ with open('function_weight.txt', 'a') as f:
         f.write(str(0))
         f.write('\n')
 
-
+modul_list = functions.modul_connect_weight(result)
 

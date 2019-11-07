@@ -1,5 +1,5 @@
 import python_files
-import pandas as pd
+import pandas
 
 result2 = python_files.list_directory('.\\', 'py')
 
@@ -36,7 +36,7 @@ def list_of_lines(file): #funkcja zlicza ilość różnych linii, jako wartość
         for linia in f:
             list_of_lines1.append(linia)
 
-    list_of_lines1 = pd.Series(list_of_lines1)
+    list_of_lines1 = pandas.Series(list_of_lines1)
     unique_values = list_of_lines1.value_counts()
 
     return(unique_values)
@@ -137,7 +137,6 @@ def final_weight(weight_list):
 
 
 def write_to_file_fun_data(list1,list2):
-    fun_info = []
     fi = open('function_weight.txt', 'a')
     for el in list1:
         licznik = -1
@@ -151,4 +150,36 @@ def write_to_file_fun_data(list1,list2):
     fi.close()
 
 
+
+
+
+
+def modul_connect_weight(file):
+            modul_list = []
+            final_list = []
+            pomocnicza_lista = []
+            for first in file:
+                polaczenia1 = first.split('.')
+                pomocnicza_lista.append(polaczenia1[0])
+                with open(first, 'r') as f:
+                    for line in f:
+                        polaczenia = line.split()
+                        if polaczenia and (polaczenia[0] == 'import' or polaczenia[0] == 'from'):
+                            modul_list.append(polaczenia[1])
+            pomocnicza_lista.remove('main')
+            for el in pomocnicza_lista:
+                modul_list.remove(el)
+            modul_list.remove('python_files')
+            for cos in modul_list:
+                for first in file:
+                    with open(first, 'r') as f:
+                        for line in f:
+                            polaczenia = line.split()
+                            if polaczenia and polaczenia[0] != 'import':
+                                if polaczenia[0] != 'from':
+                                    for el in polaczenia:
+                                        print(el)
+            print(final_list)
+            print(modul_list)
+            return final_list
 
