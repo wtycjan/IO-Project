@@ -1,17 +1,16 @@
 import functions
 import python_files
 
-
 result = python_files.list_directory('.\\', 'py')
 
-functions.how_many_lines(result)
-functions.file_connect(result)
+functions.counting_lines_of_code(result)
+functions.checking_connections_between_files(result)
 
-functions.file_connect_weight(result)
-function_list1 = functions.function_connect(result)
-function_list2 = functions.function_connect_weight(result, function_list1)
-functions.write_to_file_fun_data(function_list1,function_list2)
-x = functions.list_of_lines('connect_weight.txt')
+functions.checking_weight_of_connections_between_files(result)
+function_list1 = functions.checking_connections_between_functions(result)
+function_list2 = functions.checking_weight_of_connections_between_functions(result, function_list1)
+functions.write_to_file_fun_data(function_list1, function_list2)
+x = functions.counting_repetitive_lines('connect_weight.txt')
 weight_list = list(x)
 weight_list = functions.final_weight(weight_list)
 with open('graf.txt', 'a') as f:
@@ -27,5 +26,5 @@ with open('function_weight.txt', 'a') as f:
         f.write(str(0))
         f.write('\n')
 
-modul_list = functions.modul_connect_weight(result)
-
+modul_list = functions.searching_for_used_modules(result)
+modul_list = functions.checking_connections_between_modules(result)
