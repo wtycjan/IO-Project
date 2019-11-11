@@ -15,7 +15,7 @@ final_weight
 write_to_file_fun_data
 1
 searching_for_used_modules
-2
+1
 checking_connections_between_modules
 1
 list_directory
@@ -31,6 +31,7 @@ write_to_file_fun_data
 searching_for_used_modules
 checking_connections_between_modules
 list_directory
+dane
 0
 0
 0
@@ -42,3 +43,4 @@ list_directory
 0
 0
 0
+dane

@@ -1,9 +1,10 @@
 "functions.py"
-169
+179
 "main.py"
-26
+31
 "python_files.py"
 8
+dane
 "functions.py"
 "python_files.py"
 "main.py"
@@ -13,3 +14,4 @@
 1
 10
 1
+dane

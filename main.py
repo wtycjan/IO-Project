@@ -17,14 +17,18 @@ with open('graf.txt', 'a') as f:
     for el in weight_list:
         f.write(str(el))
         f.write('\n')
+    f.write("dane")
 with open('function_weight.txt', 'a') as f:
     for el in function_list1:
         f.write(el)
         f.write('\n')
+    f.write("dane")
+    f.write('\n')
 with open('function_weight.txt', 'a') as f:
     for el in function_list1:
         f.write(str(0))
         f.write('\n')
-
+    f.write("dane")
+    f.write('\n')
 modul_list = functions.searching_for_used_modules(result)
-modul_list = functions.checking_connections_between_modules(result)
+functions.checking_connections_between_modules(result,modul_list)

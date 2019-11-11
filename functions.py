@@ -25,6 +25,11 @@ def counting_lines_of_code(file_list):  # funkcja podająca rozmiar pliku w lini
                 fi.write('\n')
                 fi.write(str(lines))
                 fi.write("\n")
+
+        with open('graf.txt', 'a') as fi:
+            fi.write("dane")
+            fi.write('\n')
+
     except IndexError as m:
         print(m)
         print("Lack of file")
@@ -183,20 +188,27 @@ def searching_for_used_modules(file_list):  # funkcja do wykusziwania zależnoś
     return modul_list
 
 
-def checking_connections_between_modules(file_list):
+def checking_connections_between_modules(file_list, modul_list):  # funkcja sprawdzająca zależności logiczne między modułami
     final_list = []
-    modul_list = searching_for_used_modules(file_list)
     for actually_modul in modul_list:
         for actually_file in file_list:
             with open(actually_file, 'r') as f:
                 for line in f:
                     text_split = line.split()
+                    if text_split and text_split[0] == 'def':
+                        name_of_function = text_split[1]
+                        name_of_function = name_of_function.split("(")
+                        name_of_function = name_of_function[0]
                     for el in text_split:
                         text_split_next_lvl = el.split('.')
                         if text_split_next_lvl[0] == actually_modul and (len(text_split_next_lvl) > 1):
                             text_split_final_lvl = text_split_next_lvl[1].split('(')
                             final_list.append(actually_file)
                             final_list.append(actually_modul)
+                            final_list.append(name_of_function)
                             final_list.append(text_split_final_lvl[0])
-                            final_list.append("|")
+    with open('modul.txt', 'a') as f:
+        for el in final_list:
+            f.write(str(el))
+            f.write('\n')
     return final_list
