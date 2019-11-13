@@ -24,7 +24,7 @@ with open('function_weight.txt', 'a') as f:
     f.write("dane")
     f.write('\n')
 with open('function_weight.txt', 'a') as f:
-    for el in function_list1/2:
+    for el in range(int(len(function_list1)/2)):
         f.write(str(0))
         f.write('\n')
     f.write("dane")

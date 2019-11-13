@@ -192,6 +192,7 @@ def searching_for_used_modules(file_list):  # funkcja do wykusziwania zależnoś
 def checking_connections_between_modules(file_list,
                                          modul_list):  # funkcja sprawdzająca zależności logiczne między modułami
     final_list = []
+    weight_list = []
     for actually_modul in modul_list:
         counter = 0
         for actually_file in file_list:
@@ -214,8 +215,21 @@ def checking_connections_between_modules(file_list,
                             final_list.append(counter)
     with open('modul.txt', 'a') as f:
         for el in final_list:
+            if type(el) is int:
+                f.write(str(el))
+                weight_list.append(el)
+                final_list.remove(el)
+                f.write('\n')
+        f.write("dane")
+        f.write("\n")
+        for el in final_list:
             f.write(str(el))
             f.write('\n')
-    f.write("dane")
-    f.write("\n")
+        f.write("dane")
+        f.write("\n")
+        for el in weight_list:
+            f.write(str(el))
+            f.write("\n")
+        f.write("dane")
+        f.write("\n")
     return final_list
