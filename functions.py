@@ -21,8 +21,8 @@ def counting_lines_of_code(file_list):  # funkcja podająca rozmiar pliku w lini
 
             with open('graf.txt', 'a') as fi:
 
-                fi.write("\"" + element[0] + ".py\"")
-                fi.write('\n')
+                # fi.write("\"" + element[0] + ".py\"")
+                # fi.write('\n')
                 fi.write(str(lines))
                 fi.write("\n")
 
@@ -62,11 +62,17 @@ def checking_connections_between_files(file_list):  # funkcja, która sprawdza j
                                 connect_file_list.append(split_text[1])
             fi = open('graf.txt', 'a')
             for amount in range(len(connect_file_list)):
-                fi.write("\"" + element[0] + ".py\"")
+                #fi.write("\"" + element[0] + ".py\"")
+                f#i.write('\n')
+                #fi.write("\"" + str(connect_file_list[amount]) + ".py\"")
+                #fi.write('\n')
+                fi.write(element[0])
                 fi.write('\n')
-                fi.write("\"" + str(connect_file_list[amount]) + ".py\"")
+                fi.write(str(connect_file_list[amount]))
                 fi.write('\n')
-            fi.close()
+        fi.write("dane")
+        fi.write('\n')
+        fi.close()
 
     except IndexError as m:
         print(m)
@@ -136,13 +142,6 @@ def checking_weight_of_connections_between_functions(file_list,
         print("Lack of file")
 
 
-def final_weight(weight_list):
-    temp = weight_list[1]
-    weight_list[1] = weight_list[0]
-    weight_list[0] = temp
-    return weight_list
-
-
 def write_to_file_fun_data(list1, list2):
     fi = open('function_weight.txt', 'a')
     for el in list1:
@@ -150,10 +149,12 @@ def write_to_file_fun_data(list1, list2):
         for element in list2:
             if el == element:
                 counter += 1
-        fi.write(el)
-        fi.write("\n")
+        # fi.write(el)
+        # fi.write("\n")
         fi.write(str(counter))
         fi.write("\n")
+    fi.write("dane")
+    fi.write("\n")
     fi.close()
 
 
@@ -188,9 +189,11 @@ def searching_for_used_modules(file_list):  # funkcja do wykusziwania zależnoś
     return modul_list
 
 
-def checking_connections_between_modules(file_list, modul_list):  # funkcja sprawdzająca zależności logiczne między modułami
+def checking_connections_between_modules(file_list,
+                                         modul_list):  # funkcja sprawdzająca zależności logiczne między modułami
     final_list = []
     for actually_modul in modul_list:
+        counter = 0
         for actually_file in file_list:
             with open(actually_file, 'r') as f:
                 for line in f:
@@ -202,13 +205,17 @@ def checking_connections_between_modules(file_list, modul_list):  # funkcja spra
                     for el in text_split:
                         text_split_next_lvl = el.split('.')
                         if text_split_next_lvl[0] == actually_modul and (len(text_split_next_lvl) > 1):
+                            counter += 1
                             text_split_final_lvl = text_split_next_lvl[1].split('(')
                             final_list.append(actually_file)
                             final_list.append(actually_modul)
                             final_list.append(name_of_function)
                             final_list.append(text_split_final_lvl[0])
+                            final_list.append(counter)
     with open('modul.txt', 'a') as f:
         for el in final_list:
             f.write(str(el))
             f.write('\n')
+    f.write("dane")
+    f.write("\n")
     return final_list
