@@ -7,6 +7,7 @@
 1
 1
 1
+1
 2
 dane
 counting_lines_of_code
@@ -14,6 +15,7 @@ counting_repetitive_lines
 checking_connections_between_files
 checking_weight_of_connections_between_files
 checking_connections_between_functions
+checking_functions_origins
 checking_weight_of_connections_between_functions
 write_to_file_fun_data
 searching_for_used_modules
