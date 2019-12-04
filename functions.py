@@ -10,20 +10,24 @@ for el in result2:
 
 
 def counting_lines_of_code(file_list):  # funkcja podająca rozmiar pliku w linijkach kodu
+    counter = []
     try:
-        for el in file_list:
-            element = el.split('.')
-            with open(el, 'r') as f:
-                lines = 0
-                for line in f:
-                    if line != '\n':
-                        lines += 1
-
-            with open('graf.txt', 'a') as fi:
-
+        with open('graf.txt', 'w') as fi:
+            for el in file_list:
+                element = el.split('.')
+                with open(el, 'r') as f:
+                    lines=0
+                    for line in f:
+                        if line != '\n':
+                            lines += 1
+                    counter.append(lines)
+            fi.write('219\n')
+            fi.write('8\n')
+            fi.write('60\n')
+            for c in counter:
                 # fi.write("\"" + element[0] + ".py\"")
                 # fi.write('\n')
-                fi.write(str(lines))
+                fi.write(str(c))
                 fi.write("\n")
 
         with open('graf.txt', 'a') as fi:
@@ -81,7 +85,7 @@ def checking_connections_between_files(file_list):  # funkcja, która sprawdza j
 
 def checking_weight_of_connections_between_files(file_list):  # funkcja sprawdzająca jak pliki są połaczone z sobą
     try:
-        fi = open('connect_weight.txt', 'a')
+        fi = open('connect_weight.txt', 'w+')
         for actually_file in file_list:
             with open(actually_file, 'r') as f:
                 for line in f:
@@ -118,9 +122,26 @@ def checking_connections_between_functions(file_list):  # funkcja sprawdzająca 
         print(m)
         print("Lack of file")
 
+def checking_functions_origins(file_list,function_list):  # funkcja sprawdzająca jak funkcje są połączone z sobą
+    try:
+        functions_list_with_origin=[]
+        for actually_file in file_list:
+            with open(actually_file, 'r') as f:
+                for line in f:
+                    split_text = line.split()
+                    if split_text and split_text[0] == "def":
+                        tmp = split_text[1].split('(')
+                        functions_list_with_origin.append(actually_file)
 
-def checking_weight_of_connections_between_functions(file_list,
-                                                     function_list):  # funkcja sprawdzająca wagi połączeń między funkcjami
+
+        return functions_list_with_origin
+
+    except IndexError as m:
+        print(m)
+
+
+
+def checking_weight_of_connections_between_functions(file_list,function_list):  # funkcja sprawdzająca wagi połączeń między funkcjami
     try:
         how_many_function = []
         for actually_fun in function_list:
@@ -143,7 +164,7 @@ def checking_weight_of_connections_between_functions(file_list,
 
 
 def write_to_file_fun_data(list1, list2):
-    fi = open('function_weight.txt', 'a')
+    fi = open('function_weight.txt', 'w')
     for el in list1:
         counter = -1
         for element in list2:
@@ -189,8 +210,7 @@ def searching_for_used_modules(file_list):  # funkcja do wykusziwania zależnoś
     return modul_list
 
 
-def checking_connections_between_modules(file_list,
-                                         modul_list):  # funkcja sprawdzająca zależności logiczne między modułami
+def checking_connections_between_modules(file_list,modul_list):  # funkcja sprawdzająca zależności logiczne między modułami
     final_list = []
     weight_list = []
     for actually_modul in modul_list:
@@ -213,7 +233,7 @@ def checking_connections_between_modules(file_list,
                             final_list.append(name_of_function)
                             final_list.append(text_split_final_lvl[0])
                             final_list.append(counter)
-    with open('modul.txt', 'a') as f:
+    with open('modul.txt', 'w') as f:
         for el in final_list:
             if type(el) is int:
                 f.write(str(el))
