@@ -24,16 +24,12 @@ def counting_lines_of_code(el):  # funkcja podająca rozmiar pliku w linijkach k
 
 
 def write_to_file_fun_data(list1, list2):
-    fi = open('function_weight.txt', 'a')
+    lista3 = []
     for el in list1:
-        counter = 0
+        counter = -1
         for element in list2:
             if el == element:
                 counter += 1
-        # fi.write(el)
-        # fi.write("\n")
-        fi.write(str(counter))
-        fi.write("\n")
-    fi.write("dane")
-    fi.write("\n")
-    fi.close()
+        lista3.append(str(counter))
+    return lista3
+

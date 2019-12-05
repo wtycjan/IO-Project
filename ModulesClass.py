@@ -1,5 +1,6 @@
 import functions
 
+
 class Modules(object):
 
     def __init__(self):
@@ -62,7 +63,8 @@ class Modules(object):
                             if text_split_next_lvl[0] == actually_modul and (len(text_split_next_lvl) > 1):
                                 counter += 1
                                 text_split_final_lvl = text_split_next_lvl[1].split('(')
-                                Modules.modulConnectionList.append(actually_file[0] + "[{}]".format(numbers_of_code_lines_of_actually_file))
+                                Modules.modulConnectionList.append(
+                                    actually_file[0] + "[{}]".format(numbers_of_code_lines_of_actually_file))
                                 Modules.modulConnectionList.append(actually_modul)
                                 Modules.modulConnectionList.append(name_of_function)
                                 Modules.modulConnectionList.append(text_split_final_lvl[0])
