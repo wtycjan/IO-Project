@@ -36,6 +36,7 @@ class Functions(object):
         try:
             i = 0
             for actually_file in file_list:
+                element = actually_file.split(".")
                 with open(actually_file, 'r') as f:
                     numbers_of_code_lines_of_actually_file = functions.counting_lines_of_code(actually_file)
                     for line in f:
@@ -45,7 +46,7 @@ class Functions(object):
                             if tmp[0] != "__init__":
                                 Functions.functionsConnectionList.append(tmp[0] + "[{}]".format(str(weight_list[i])))
                                 Functions.functionsConnectionList.append(
-                                    actually_file + "[{}]".format(numbers_of_code_lines_of_actually_file))
+                                    element[0] + "[{}]".format(numbers_of_code_lines_of_actually_file))
                                 i += 1
             for el in range(int(len(Functions.functionsConnectionList) / 2)):
                 Functions.functionsConnectionWeight.append(str(1))
