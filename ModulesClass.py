@@ -19,7 +19,7 @@ class Modules(object):
         for actually_file in file_list:
             text_split = actually_file.split('.')
             list_of_fileName.append(text_split[0])
-            with open(actually_file, 'r') as f:
+            with open(functions.path + '\\' + actually_file, 'r') as f:
                 for line in f:
                     text_split = line.split()
                     if text_split and (text_split[0] == 'import' or text_split[0] == 'from'):
@@ -49,7 +49,7 @@ class Modules(object):
         for actually_modul in modul_list:
             counter = 0
             for actually_file in file_list:
-                with open(actually_file, 'r') as f:
+                with open(functions.path + '\\' + actually_file, 'r') as f:
                     numbers_of_code_lines_of_actually_file = functions.counting_lines_of_code(actually_file)
                     actually_file = actually_file.split('.')
                     for line in f:

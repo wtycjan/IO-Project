@@ -15,7 +15,7 @@ class Files(object):
                                                      actually_file,
                                                      connect_file):  # funkcja sprawdzająca jak pliki są połaczone z sobą
         try:
-            with open(actually_file, 'r') as f:
+            with open(functions.path + '\\' + actually_file, 'r') as f:
                 weight = 0
                 for line in f:
                     split_text = line.split()  # zmienna zawierająca elemnty danej linijki kodu
@@ -39,7 +39,7 @@ class Files(object):
             for actually_file in file_list:
                 element = actually_file.split(".")
                 connect_file_list = []
-                with open(actually_file, 'r') as f:
+                with open(functions.path + '\\' + actually_file, 'r') as f:
                     numbers_of_code_lines_of_actually_file = functions.counting_lines_of_code(actually_file)
                     for line in f:
                         split_text = line.split()

@@ -15,7 +15,7 @@ class Functions(object):
         try:
             functions_list = []
             for actually_file in file_list:
-                with open(actually_file, 'r') as f:
+                with open(functions.path + '\\' + actually_file, 'r') as f:
                     numbers_of_code_lines_of_actually_file = functions.counting_lines_of_code(actually_file)
                     for line in f:
                         split_text = line.split()
@@ -37,7 +37,7 @@ class Functions(object):
             i = 0
             for actually_file in file_list:
                 element = actually_file.split(".")
-                with open(actually_file, 'r') as f:
+                with open(functions.path + '\\' + actually_file, 'r') as f:
                     numbers_of_code_lines_of_actually_file = functions.counting_lines_of_code(actually_file)
                     for line in f:
                         split_text = line.split()
@@ -62,7 +62,7 @@ class Functions(object):
             how_many_function = []
             for actually_fun in function_list:
                 for actually_file in file_list:
-                    with open(actually_file, 'r') as f:
+                    with open(functions.path + '\\' + actually_file, 'r') as f:
                         for line in f:
                             split_text = line.split()
                             if split_text and split_text[0] != 'import':
