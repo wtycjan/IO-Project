@@ -26,14 +26,15 @@ def main():
 
     modul_list = ModulesClass.Modules.searching_for_used_modules(result)
     ModulesClass.Modules.checking_connections_between_modules(result, modul_list)
-    RegistrationClass.Registration.write_to_file(FilesClass.Files.filesConnectionList,
-                                                 FunctionsClass.Functions.functionsConnectionList,
-                                                 ModulesClass.Modules.modulConnectionList)
 
-    RegistrationClass.Registration.write_to_file(
-        FilesClass.Files.filesConnectionWeight,
-        FunctionsClass.Functions.functionsConnectionWeight,
-        ModulesClass.Modules.modulConnectionWeight)
+    RegistrationClass.Registration.write_to_file("FILES",FilesClass.Files.filesConnectionList)  #Wpisywanie do pliku połączeń plików
+    RegistrationClass.Registration.write_to_file("",FilesClass.Files.filesConnectionWeight)
+
+    RegistrationClass.Registration.write_to_file("Functions",FunctionsClass.Functions.functionsConnectionList) #Wpisywanie do pliku połączeń funkcji
+    RegistrationClass.Registration.write_to_file("",FunctionsClass.Functions.functionsConnectionWeight)
+
+    RegistrationClass.Registration.write_to_file("Modules",ModulesClass.Modules.modulConnectionList) #Wpisywanie do pliku połączeń modułów
+    RegistrationClass.Registration.write_to_file("",ModulesClass.Modules.modulConnectionWeight)
 
 
 main()

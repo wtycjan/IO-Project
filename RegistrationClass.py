@@ -9,8 +9,10 @@ class Registration(FilesClass.Files, FunctionsClass.Functions, ModulesClass.Modu
         pass
 
     @classmethod
-    def write_to_file(cls, *args):
+    def write_to_file(cls,sub, *args):
         with open('graf_jozin.txt', 'a') as fi:
+            if sub != "":
+                fi.write(sub.upper()+"\n")
             for list in args:
                 for el in list:
                     fi.write(el)
